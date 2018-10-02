@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Router>
+          <div>
+            <Route path="/" exact strict render={()=>{return (<h1>Home Page</h1>)}}/>{/*exact eşitse yönlendir demek, eğer konulmazsa / ve /contactda da '/' olduğu için homepage hep render edilir*/}
+            <Route path="/contact" exact strict render={()=>{return (<h1>Contact Page</h1>)}}/>{/*strict /contact ve /contact/ yerine sadece /contact ın geçerli olmasını sağlar, birebir eşirse render et demektir*/}
+          </div>
+        </Router>
       </div>
     );
   }
